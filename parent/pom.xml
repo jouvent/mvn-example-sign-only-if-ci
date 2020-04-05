@@ -1,0 +1,41 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>example</groupId>
+    <artifactId>parent</artifactId>
+    <version>1.0</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <!-- don't run jsign (unless activated in settings.xml) --> 
+				<jsign.sign-exe.phase>none</jsign.sign-exe.phase>
+    </properties>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>net.jsign</groupId>
+                    <artifactId>jsign-maven-plugin</artifactId>
+                    <version>3.1</version>
+                    <executions>
+                      <execution>
+                        <id>sign-exe</id>
+                        <phase>none</phase>
+                        <goals>
+                          <goal>sign</goal>
+                        </goals>
+                        <configuration>
+                          <file>${project.build.directory}/${project.build.finalName}.exe</file>
+                          <name>${project.name}</name>
+                          <url>${project.url}</url>
+                          <keystore>${jsign.keystore}</keystore>
+                          <alias>${jsign.alias}</alias>
+                          <storepass>${jsign.storepass}</storepass>
+                        </configuration>
+                      </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+      </build>
+</project>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+	<profiles>
+		<profile>
+			<id>siging</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<jsign.sign-exe.phase>package</jsign.sign-exe.phase>
+				<jsign.keystore>/full/path/to/keystore.jks</jsign.keystore>
+                <jsign.alias>alias</jsign.alias>
+                <jsign.storepass>password</jsign.storepass>
+			</properties>
+		</profile>
+	</profiles>
+
+</settings>
